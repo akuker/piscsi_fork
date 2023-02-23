@@ -33,7 +33,13 @@ jobs:
         with:
           name: piscsi_test_log.txt
           path: cpp/piscsi_test_log.txt
-          
+  unit_tests21:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: cpp
+    steps:
+      - uses: actions/checkout@v3          
   build:
     runs-on: ubuntu-22.04
     steps:
