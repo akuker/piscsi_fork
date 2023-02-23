@@ -153,11 +153,4 @@ jobs:
   
           # Password of default wifi network to connect to.
           wpa-password: ''
-  archive:
-    - steps:
-      - name: Archive
-        uses: actions/upload-artifact@v3
-        with:
-          name: pi-gen-image
-          path: ${{ steps.build.outputs.image-path }}  
 
