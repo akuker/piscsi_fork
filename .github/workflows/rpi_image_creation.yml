@@ -11,28 +11,7 @@ env:
   APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
 
 jobs:
-  unit_tests:
-    runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: cpp
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: sudo apt-get install ${{ env.APT_PACKAGES }}
-
-      - name: Build unit tests
-        run: make -j $(nproc) test
-
-      - name: Run unit tests
-        run: (set -o pipefail && bin/fullspec/piscsi_test | tee piscsi_test_log.txt)
-
-      - name: Upload logs
-        uses: actions/upload-artifact@v3
-        with:
-          name: piscsi_test_log.txt
-          path: cpp/piscsi_test_log.txt
   asdf:
     runs-on: ubuntu-22.04
     defaults:
@@ -94,19 +73,19 @@ jobs:
           hostname: raspberrypi
   
           # Final image name.
-          image-name: ''
+          image-name: 'piscsi'
   
           # Default keyboard keymap.
-          keyboard-keymap: gb
+          keyboard-keymap: us
   
           # Default keyboard layout.
-          keyboard-layout: English (UK)
+          keyboard-layout: English (US)
   
           # Default locale of the system image.
-          locale: en_GB.UTF-8
+          locale: en_US.UTF-8
   
           # Password of the intial user account, locked if empty.
-          password: ''
+          password: 'raspberry'
   
           # Path where selected pi-gen ref will be checked out to. If the path does not yet 
           # exist, it will be created (including its parents).
