@@ -15,7 +15,7 @@ env:
   APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
 
 jobs:
-  unit_tests:
+  build:
     runs-on: ubuntu-22.04
     steps:
       - uses: usimd/pi-gen-action@v1
