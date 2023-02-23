@@ -1,11 +1,5 @@
 name: Generate a PiSCSI OS image, based upon the official Rapsberry Pi OS
 
-on:
-  workflow_dispatch:
-  push:
-    paths:
-      - 'cpp/**'
-      - '.github/workflows/cpp.yml'
 
 env:
   APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
