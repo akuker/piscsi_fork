@@ -1,5 +1,11 @@
 name: Generate a PiSCSI OS image, based upon the official Rapsberry Pi OS
 
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'cpp/**'
+      - '.github/**'
 
 env:
   APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
@@ -138,10 +144,7 @@ jobs:
   
           # Name of the initial user account.
           username: pi
-  
-          # Print all output from pi-gen.
-          verbose-output: false
-  
+
           # Wifi country code of default network to connect to.
           wpa-country: ''
   
