@@ -11,10 +11,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
+
 jobs:
-  make_my_build:
-    runs-on: ubuntu-latest
+  unit_tests:
+    runs-on: ubuntu-22.04
     steps:
       - uses: usimd/pi-gen-action@v1
         with:
