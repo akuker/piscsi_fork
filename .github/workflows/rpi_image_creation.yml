@@ -68,10 +68,10 @@ jobs:
           github-token: ${{ github.token }}
   
           # Host name of the image.
-          hostname: piscsi-${{ GITHUB_REF_NAME }}
+          hostname: piscsi-${{ github.ref_name }}
   
           # Final image name.
-          image-name: 'piscsi-${{ GITHUB_REF_NAME }}'
+          image-name: 'piscsi-${{ github.ref_name }}'
   
           # Default keyboard keymap.
           keyboard-keymap: us
