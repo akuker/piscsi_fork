@@ -12,14 +12,12 @@ env:
 
 jobs:
 
-  asdf:
-    runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: cpp
+  Build_32bit_OS:
+    runs-on: ubuntu-latest
     steps:
       - uses: usimd/pi-gen-action@v1
         with:
+          name: "Build 32 bit os"
           verbose-output: true
           # Compression to apply on final image (either "none", "zip", "xz" or "gz").
           compression: zip
@@ -33,7 +31,7 @@ jobs:
           # 'username' stays activated. 'username' must be set for this to work. Please be 
           # aware of the implied security risk of defining a default username and password 
           # for your devices.
-          disable-first-boot-user-rename: 0
+          disable-first-boot-user-rename: 1
   
           # Additional options to include in PIGEN_DOCKER_OPTS
           docker-opts: ''
@@ -44,7 +42,7 @@ jobs:
           enable-noobs: false
   
           # Enable SSH access to Pi.
-          enable-ssh: 0
+          enable-ssh: 1
   
           # If this feature is enabled, the action will configure pi-gen to not export any 
           # stage as image but the last one defined in property 'stage-list'. This is 
@@ -70,10 +68,10 @@ jobs:
           github-token: ${{ github.token }}
   
           # Host name of the image.
-          hostname: raspberrypi
+          hostname: piscsi-${{ GITHUB_REF_NAME }}
   
           # Final image name.
-          image-name: 'piscsi'
+          image-name: 'piscsi-${{ GITHUB_REF_NAME }}'
   
           # Default keyboard keymap.
           keyboard-keymap: us
@@ -92,7 +90,7 @@ jobs:
           pi-gen-dir: pi-gen
   
           # GitHub repository to fetch pi-gen from, must be a fork from RPi-Distro/pi-gen.
-          pi-gen-repository: RPi-Distro/pi-gen
+          pi-gen-repository: piscsi/piscsi-pi-gen
   
           # Release version of pi-gen to use. This can both be a branch or tag name known in 
           # the pi-gen repository.
@@ -132,4 +130,7 @@ jobs:
   
           # Password of default wifi network to connect to.
           wpa-password: ''
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pi-gen-image
+          path: ${{ steps.build.outputs.image-path }}
