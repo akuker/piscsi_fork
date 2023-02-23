@@ -33,13 +33,6 @@ jobs:
         with:
           name: piscsi_test_log.txt
           path: cpp/piscsi_test_log.txt
-  build:
-    runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: cpp
-    steps:
-      - uses: actions/checkout@v3
   asdf:
     runs-on: ubuntu-22.04
     defaults:
@@ -163,5 +156,10 @@ jobs:
   
           # Password of default wifi network to connect to.
           wpa-password: ''
-
+  archive:
+    - name: Archive
+    - uses: actions/upload-artifact@v3
+      with:
+        name: pi-gen-image
+        path: ${{ steps.build.outputs.image-path }}  
 
