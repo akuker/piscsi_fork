@@ -14,9 +14,9 @@ jobs:
 
   Build_32bit_OS:
     runs-on: ubuntu-latest
-    id: build32
     steps:
       - uses: usimd/pi-gen-action@v1
+        id: build32
         with:
           name: "Build 32 bit os"
           verbose-output: true
