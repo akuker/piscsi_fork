@@ -133,7 +133,7 @@ jobs:
           wpa-password: ''
       - uses: actions/upload-artifact@v3
         with:
-          name: pi-gen-image
+          name: 32-bit-pi-gen-image
           path: ${{ steps.build32.outputs.image-path }}
           
   Build_64bit_OS:
@@ -258,5 +258,5 @@ jobs:
           wpa-password: ''
       - uses: actions/upload-artifact@v3
         with:
-          name: pi-gen-image
+          name: 64-bit-pi-gen-image
           path: ${{ steps.build64.outputs.image-path }}
