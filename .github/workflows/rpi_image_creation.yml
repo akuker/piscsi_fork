@@ -14,6 +14,7 @@ jobs:
 
   Build_32bit_OS:
     runs-on: ubuntu-latest
+    id: build32
     steps:
       - uses: usimd/pi-gen-action@v1
         with:
@@ -90,8 +91,8 @@ jobs:
           pi-gen-dir: pi-gen
   
           # GitHub repository to fetch pi-gen from, must be a fork from RPi-Distro/pi-gen.
-          # pi-gen-repository: piscsi/piscsi-pi-gen
-          pi-gen-repository: RPi-Distro/pi-gen
+          pi-gen-repository: piscsi/piscsi-pi-gen
+          # pi-gen-repository: RPi-Distro/pi-gen
   
           # Release version of pi-gen to use. This can both be a branch or tag name known in 
           # the pi-gen repository.
@@ -134,4 +135,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: pi-gen-image
-          path: ${{ steps.build.outputs.image-path }}
+          path: ${{ steps.build32.outputs.image-path }}
