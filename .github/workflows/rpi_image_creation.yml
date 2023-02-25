@@ -11,7 +11,6 @@ env:
   APT_PACKAGES: libspdlog-dev libpcap-dev libevdev2 libev-dev protobuf-compiler libgtest-dev libgmock-dev
 
 jobs:
-
   Build_32bit_OS:
     runs-on: ubuntu-latest
     steps:
